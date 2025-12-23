@@ -1,7 +1,7 @@
 package com.nubank.nubank;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.nubank.nubank.dto.TaxacaoDto;
+import com.nubank.nubank.dto.TaxDto;
 import com.nubank.nubank.dto.TransacaoDto;
 import com.nubank.nubank.service.TransacaoService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -25,7 +25,7 @@ public class Main {
 
 		while ((linha = reader.readLine()) != null  && !linha.isBlank()) {
 			List<TransacaoDto> transacoes = mapper.readValue(linha, new TypeReference<List<TransacaoDto>>() {});
-			List<TaxacaoDto> resultado = service.executarTransacao(transacoes);
+			List<TaxDto> resultado = service.executarTransacao(transacoes);
 
 			System.out.println(mapper.writeValueAsString(resultado));
 		}

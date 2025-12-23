@@ -1,20 +1,32 @@
 package com.nubank.nubank.service;
 
-import com.nubank.nubank.dto.TaxacaoDto;
+
+import com.nubank.nubank.dto.TaxDto;
 import com.nubank.nubank.dto.TransacaoDto;
 import lombok.NoArgsConstructor;
-import org.jvnet.hk2.annotations.Service;
+import org.springframework.stereotype.Service;
+
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 @NoArgsConstructor
 public class TransacaoService {
-    public List<TaxacaoDto> executarTransacao(List<TransacaoDto> transacoes) {
+    public List<TaxDto> executarTransacao(List<TransacaoDto> transacoes) {
 
-        BigDecimal imposto = BigDecimal.ZERO;
+        List<TaxDto> tax = new ArrayList<>();
+        BigDecimal mediaPonderada;
 
-        return List.of(new TaxacaoDto(imposto));
+        for(TransacaoDto transacao : transacoes){
+
+            transacao.getOperation();
+
+            TaxDto taxDto = new TaxDto(BigDecimal.ZERO);
+            tax.add(taxDto);
+        }
+
+        return tax;
     }
 }
