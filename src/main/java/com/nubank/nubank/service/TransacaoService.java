@@ -36,7 +36,7 @@ public class TransacaoService {
 
                 quantidadeDeAcoesAtual = novaQuantidade;
 
-                taxDto.setTax(BigDecimal.ZERO);
+                taxDto.setTax(BigDecimal.ZERO.setScale(1));
             }
             else{
 
@@ -65,7 +65,7 @@ public class TransacaoService {
                         if (lucroTributavel.compareTo(BigDecimal.ZERO) < 0) {
                             prejuizoAcumulado = prejuizoAcumulado.add(lucroTributavel.abs());
                         }
-                        taxDto.setTax(BigDecimal.ZERO);
+                        taxDto.setTax(BigDecimal.ZERO.setScale(1));
                     }
 
                 }
@@ -73,7 +73,7 @@ public class TransacaoService {
                     if (lucroTributavel.compareTo(BigDecimal.ZERO) < 0) {
                         prejuizoAcumulado = prejuizoAcumulado.add(lucroTributavel.abs());
                     }
-                    taxDto.setTax(BigDecimal.ZERO);
+                    taxDto.setTax(BigDecimal.ZERO.setScale(1));
                 }
             }
 
